@@ -20,14 +20,14 @@ function App() {
     },
   ];
 
-  const [searchTerm, setSearchTerm] = React.useState(" ");
+  const [searchTerm, setSearchTerm] = React.useState("React");
   const Handler = (event) => setSearchTerm(event.target.value);
   const FilterList = stories.filter(function (story) {
     return story.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
   return (
     <div>
-      <Search onSearch={Handler} />
+      <Search search={searchTerm} onSearch={Handler} />
       <List list={FilterList} />
     </div>
   );
@@ -35,7 +35,12 @@ function App() {
 const Search = (props) => (
   <div>
     <label htmlFor="search">Search</label>
-    <input id="search" type="text" onChange={props.onSearch} />
+    <input
+      id="search"
+      type="text"
+      value={props.search}
+      onChange={props.onSearch}
+    />
   </div>
 );
 
