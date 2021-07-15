@@ -21,7 +21,9 @@ function App() {
   ];
 
   const [searchTerm, setSearchTerm] = React.useState("React");
-  const Handler = (event) => setSearchTerm(event.target.value);
+  const Handler = (event) => {
+    setSearchTerm(event.target.value);
+  };
   const FilterList = stories.filter(function (story) {
     return story.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
@@ -32,28 +34,29 @@ function App() {
     </div>
   );
 }
-const Search = (props) => (
-  <div>
-    <label htmlFor="search">Search</label>
-    <input
-      id="search"
-      type="text"
-      value={props.search}
-      onChange={props.onSearch}
-    />
-  </div>
-);
 
-const List = (props) =>
-  props.list.map((item) => (
-    <div key={item.objectID}>
-      <span>
-        <a href={item.url}>{item.title}</a>
-      </span>
-      <span>{item.author}</span>
-      <span>{item.num_comments}</span>
-      <span>{item.points}</span>
+const Search = ({ onSearch, search }) => {
+  return (
+    <div>
+      <label htmlFor="search">Search</label>
+      <input type="text" id="search" value={search} onChange={onSearch} />
     </div>
-  ));
+  );
+};
+
+const List = ({ list }) =>
+  list.map(({ objectID, ...item }) => <Item key={objectID} {...item} />);
+
+const Item = ({ objectID, url, title, author, num_comments, points }) => {
+  return (
+    <div>
+      <a href={url}>{title}</a>
+      <span>{author}</span>
+      <span>{num_comments}</span>
+      <span>{points}</span>
+      <span>{objectID}</span>
+    </div>
+  );
+};
 
 export default App;
