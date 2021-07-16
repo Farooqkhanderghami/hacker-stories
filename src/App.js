@@ -34,18 +34,10 @@ function App() {
     return story.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-<<<<<<< HEAD
   // useEffect
   useEffect(() => {
-    console.log("I will run only once at application start....");
-  }, []);
-=======
-    // useEffect 
-    useEffect(() => {
-        consloe.log("I will run whenever search term changes");
-
-    }, [searchTerm])
->>>>>>> 73821a6d2c6c7aaa3dbd212a3cebf1175d0028b2
+    alert("I will run whenever search term changes");
+  }, [searchTerm]);
 
   return (
     <div>
