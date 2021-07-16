@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 function App() {
   const stories = [
@@ -20,6 +20,8 @@ function App() {
     },
   ];
 
+
+
   const [searchTerm, setSearchTerm] = React.useState("React");
   const Handler = (event) => {
     setSearchTerm(event.target.value);
@@ -27,6 +29,12 @@ function App() {
   const FilterList = stories.filter(function (story) {
     return story.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
+
+    // useEffect 
+    useEffect(() => {
+        consloe.log("I will run only once at application start....");
+    }, [])
+
   return (
     <div>
       <Search search={searchTerm} onSearch={Handler} />
