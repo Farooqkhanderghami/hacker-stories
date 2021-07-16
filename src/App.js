@@ -41,8 +41,9 @@ function App() {
 
     // useEffect 
     useEffect(() => {
-        consloe.log("I will run only once at application start....");
-    }, [])
+        consloe.log("I will run whenever search term changes");
+
+    }, [searchTerm])
 
   return (
     <div>
