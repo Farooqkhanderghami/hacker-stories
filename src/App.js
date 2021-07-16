@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 
 function App() {
   const stories = [
@@ -20,18 +20,13 @@ function App() {
     },
   ];
 
-<<<<<<< HEAD
   const [searchTerm, setSearchTerm] = React.useState(
     localStorage.getItem("search") || "React"
   );
   React.useEffect(() => {
     localStorage.setItem("search", searchTerm);
   }, [searchTerm]);
-=======
 
-
-  const [searchTerm, setSearchTerm] = React.useState("React");
->>>>>>> 38db08310144a43ebb91a0b30f6ba79e39f61863
   const Handler = (event) => {
     setSearchTerm(event.target.value);
   };
@@ -39,10 +34,10 @@ function App() {
     return story.title.toLowerCase().includes(searchTerm.toLowerCase());
   });
 
-    // useEffect 
-    useEffect(() => {
-        consloe.log("I will run only once at application start....");
-    }, [])
+  // useEffect
+  useEffect(() => {
+    console.log("I will run only once at application start....");
+  }, []);
 
   return (
     <div>
